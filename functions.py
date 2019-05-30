@@ -11,6 +11,9 @@ lang_dict = {'RUS': {'hebrew': 'введите слово на иврите: ',
                      'type': 'введите часть речи (сущ, глаг, мест, прилаг, нареч, вопрос, союз): ',
                      'type_list': ['сущ', 'глаг', 'мест', 'прилаг',
                                    'нареч', 'вопрос', 'союз', 'доп'],
+                     'type_error': 'нет такой части речи',
+                     'genus_error': 'нет такого рода',
+                     'finish_add': 'закончили'
                      }}
 
 
@@ -112,3 +115,42 @@ def read_table(conn_dict, table_name):
   connectionObject.close()
   
   return table
+
+def add_row(table_name, values):
+  cols = read_table(table_name).columns.tolist()
+  cell_1, cell_2, cell_3, cell_4, cell_5  
+  try:    
+      
+      cursorObject        = connectionObject.cursor()      
+            
+      # Insert rows into the MySQL Table
+      insertStatement = 'INSERT INTO ' + str(table_name) + '('
+      
+      for i in range(len(cols)):
+        insertStatement = insertStatement + str(cols[i])
+        if i != len(cols)-1:
+           insertStatement = insertStatement + ', '
+        else:
+           insertStatement = insertStatement + ') VALUES (\''
+            
+      for i in range(len(values)):
+        insertStatement = insertStatement + str(values[i])
+        if i != len(cols)-1:
+           insertStatement = insertStatement + '\',\''
+        else:
+           insertStatement = insertStatement + '\')'
+      
+    
+                       
+      cursorObject.execute(insertStatement)
+
+      cursorObject.close()
+      
+  except Exception as e:
+
+      print("Exeception occured:{}".format(e))
+
+  finally:
+    
+      connectionObject.commit()      
+      
