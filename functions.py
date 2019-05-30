@@ -217,11 +217,16 @@ def create_and_save_input(table_name,lang='RUS'):
     return True
 
 ### Start loop to add new words until empty input is recieved
-def add_words_to_dict(conn_dict, table_name):  
+def add_words_to_dict(conn_dict, table_name, conn_obj):  
   add_next_row = True
   while add_next_row:
     add_next_row = create_and_save_input(table_name)  
-    table = pd.read_sql('select * from '+str(table_name) +';', con=connectionObject)
+    table = pd.read_sql('select * from '+str(table_name) +';', con=conn_obj)
     print(table.tail(3))
     time.sleep(3)
     clear_output()
+   
+### Create Connection
+def connectionObject(conn_dict):
+  return pymysql.connect(conn_dict['host'], user=conn_dict['user'], port=conn_dict['port'],passwd=conn_dict['password'],
+                         db=conn_dict['dbname'])
