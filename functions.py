@@ -111,8 +111,7 @@ def read_table(table_name, conn_obj):
   return table
 
 def add_row(table_name, conn_obj, values):
-  cols = read_table(table_name, conn_obj).columns.tolist()
-  cell_1, cell_2, cell_3, cell_4, cell_5  
+  cols = read_table(table_name, conn_obj).columns.tolist()  
   try:    
       
       cursorObject        = connectionObject.cursor()      
