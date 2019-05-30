@@ -108,8 +108,6 @@ def del_table(conn_dict, table_name):
 ### Read Table
 def read_table(table_name, conn_obj):  
   table = pd.read_sql('select * from '+str(table_name)+';', con=conn_obj)   
-  connectionObject.close()
-  
   return table
 
 def add_row(table_name, conn_obj, values):
