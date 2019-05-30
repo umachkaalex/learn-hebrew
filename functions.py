@@ -145,7 +145,7 @@ def add_row(table_name, conn_obj, values):
 
   finally:
     
-      connectionObject.commit()      
+      conn_obj.commit()      
       
 
 ### Get inputs, create row and add it to the table
