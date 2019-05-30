@@ -227,6 +227,6 @@ def add_words_to_dict(conn_dict, table_name, conn_obj):
     clear_output()
    
 ### Create Connection
-def connectionObject(conn_dict):
+def connection_object(conn_dict):
   return pymysql.connect(conn_dict['host'], user=conn_dict['user'], port=conn_dict['port'],passwd=conn_dict['password'],
                          db=conn_dict['dbname'])
