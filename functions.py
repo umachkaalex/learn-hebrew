@@ -156,3 +156,72 @@ def add_row(table_name, values):
     
       connectionObject.commit()      
       
+
+### Get inputs, create row and add it to the table
+def create_and_save_input(table_name,lang='RUS'):
+  table = pd.read_sql('select * from Hebrew;', con=connectionObject)
+  hebr_words = table['Hebrew'].tolist()  
+  transl_words = table['Translat'].tolist()
+  genus_words = table['Genus'].tolist()  
+  
+  cell_1 = input(lang_dict[lang]['hebrew']) or ''
+  if cell_1 == '':
+    print(lang_dict[lang]['finish_add'])
+    return False
+  
+  cell_2 = input(lang_dict[lang]['translation']) or ''
+  if cell_2 == '':
+    print(lang_dict[lang]['finish_add'])
+    return False
+  
+  cell_3 = input(lang_dict[lang]['translitiration']) or ''
+  if cell_3 == '':
+    print(lang_dict[lang]['finish_add'])
+    return False
+  
+  cell_4 = 'no_input'
+  while cell_4 == 'no_input':
+    cell_4 = input(lang_dict[lang]['genus']) or ''
+    if cell_4 == '':
+      print(lang_dict[lang]['finish_add'])
+      return False
+    if cell_4 not in lang_dict[lang]['genus_list']:
+      print(lang_dict[lang]['genius_error'])      
+      cell_4 = 'no_input'
+  
+  cell_5 = 'no_input'
+  while cell_5 == 'no_input':
+    cell_5 = input(lang_dict[lang]['type']) or ''
+    if cell_5 == '':
+      print(lang_dict[lang]['finish_add'])
+      return False
+    if cell_5 not in lang_dict[lang]['type_list']:
+      print(lang_dict[lang]['type_error'])      
+      cell_5 = 'no_input'
+  
+  if  cell_1 in hebr_words:    
+    idx = hebr_words.index(cell_1)    
+    if cell_2 == transl_words[idx] and cell_4 == genus_words[idx]:
+      dupl_err_txt = lang_dict[lang]['dupl_err_txt']      
+      print(str(dupl_err_txt[0]) + str(cell_1) + '-' + str(cell_2) + '-'+ str(cell_3) + '-'+ str(cell_4) + '-'+ str(cell_5) + str(dupl_err_txt[1]))
+      time.sleep(3)
+      return True
+      
+  check = input(str(lang_dict[lang]['check_add']) + str(cell_1) + '-' + str(cell_2) + '-'+ str(cell_3) + '-'+ str(cell_4) + '-'+ str(cell_5)) or ''
+  if check == '':
+      print(lang_dict[lang]['finish_add'])
+      return False
+  
+  else:
+    add_row(table_name, [cell_1, cell_2, cell_3, cell_4, cell_5])
+    return True
+
+### Start loop to add new words until empty input is recieved
+def add_words_to_dict(conn_dict, table_name):  
+  add_next_row = True
+  while add_next_row:
+    add_next_row = create_and_save_input(table_name)  
+    table = pd.read_sql('select * from '+str(table_name) +';', con=connectionObject)
+    print(table.tail(3))
+    time.sleep(3)
+    clear_output()
