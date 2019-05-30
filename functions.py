@@ -1,3 +1,16 @@
+### Create language texts
+lang_dict = {'RUS': {'hebrew': 'введите слово на иврите: ',                     
+                     'translation': 'введите перевод: ',                     
+                     'translitiration': 'введите транслитерацию: ',
+                     'genus': 'введите род (муж, жен): ',
+                     'genus_list': ['муж', 'жен'],
+                     'type': 'введите часть речи (сущ, глаг, мест, прилаг, нареч, вопрос, союз): ',
+                     'type_list': ['сущ', 'глаг', 'мест', 'прилаг',
+                                   'нареч', 'вопрос', 'союз', 'доп'],
+                     }}
+
+
+
 ### CREATE TABLE
 def create_table(conn_dict, table_name, cols, types):
   try:
