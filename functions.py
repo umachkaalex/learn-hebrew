@@ -1,6 +1,7 @@
 import pymysql
 import pandas as pd
 import time
+from IPython.display import clear_output
 
 ### Create language texts
 lang_dict = {'RUS': {'hebrew': 'введите слово на иврите: ',                     
