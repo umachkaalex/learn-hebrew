@@ -118,8 +118,8 @@ def read_table(conn_dict, table_name):
   
   return table
 
-def add_row(table_name, values):
-  cols = read_table(table_name).columns.tolist()
+def add_row(table_name, conn_obj, values):
+  cols = read_table(table_name, conn_obj).columns.tolist()
   cell_1, cell_2, cell_3, cell_4, cell_5  
   try:    
       
@@ -213,7 +213,7 @@ def create_and_save_input(table_name, conn_obj, lang='RUS'):
       return False
   
   else:
-    add_row(table_name, [cell_1, cell_2, cell_3, cell_4, cell_5])
+    add_row(table_name, conn_obj, [cell_1, cell_2, cell_3, cell_4, cell_5])
     return True
 
 ### Start loop to add new words until empty input is recieved
