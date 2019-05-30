@@ -115,7 +115,7 @@ def add_row(table_name, conn_obj, values):
   cols = read_table(table_name, conn_obj).columns.tolist()  
   try:    
       
-      cursorObject        = connectionObject.cursor()      
+      cursorObject        = conn_obj.cursor()      
             
       # Insert rows into the MySQL Table
       insertStatement = 'INSERT INTO ' + str(table_name) + '('
