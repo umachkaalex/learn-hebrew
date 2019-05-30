@@ -82,3 +82,15 @@ def del_table(conn_dict, table_name):
 
   finally:
       connectionObject.close()
+
+### Read Table
+def read_table(table_name):
+  connectionObject = pymysql.connect(conn_dict['host'],
+                                           user=conn_dict['user'],
+                                           port=conn_dict['port'],
+                                           passwd=conn_dict['password'],
+                                           db=conn_dict['dbname'])
+  table = pd.read_sql('select * from Hebrew;', con=connectionObject)   
+  connectionObject.close()
+  
+  return table
