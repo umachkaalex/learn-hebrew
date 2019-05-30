@@ -214,7 +214,8 @@ def add_words_to_dict(conn_dict, table_name, conn_obj):
   while add_next_row:
     add_next_row = create_and_save_input(table_name, conn_obj)  
     table = read_table(table_name, conn_obj)
-    print(table.10)
+    print(table.tail(3))
+    time.sleep(10)    
     clear_output()
    
 ### Create Connection
