@@ -84,7 +84,7 @@ def del_table(conn_dict, table_name):
       connectionObject.close()
 
 ### Read Table
-def read_table(table_name):
+def read_table(conn_dict, table_name):
   connectionObject = pymysql.connect(conn_dict['host'],
                                            user=conn_dict['user'],
                                            port=conn_dict['port'],
