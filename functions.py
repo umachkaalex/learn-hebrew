@@ -1,3 +1,7 @@
+import pymysql
+import pandas as pd
+import time
+
 ### Create language texts
 lang_dict = {'RUS': {'hebrew': 'введите слово на иврите: ',                     
                      'translation': 'введите перевод: ',                     
@@ -103,7 +107,8 @@ def read_table(conn_dict, table_name):
                                            port=conn_dict['port'],
                                            passwd=conn_dict['password'],
                                            db=conn_dict['dbname'])
-  table = pd.read_sql('select * from Hebrew;', con=connectionObject)   
+   
+  table = pd.read_sql('select * from '+str(table_name)+';', con=connectionObject)   
   connectionObject.close()
   
   return table
