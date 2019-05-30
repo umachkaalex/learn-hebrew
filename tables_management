@@ -1,0 +1,84 @@
+### CREATE TABLE
+def create_table(conn_dict, table_name, cols, types):
+  try:
+      connectionObject = pymysql.connect(conn_dict['host'],
+                                           user=conn_dict['user'],
+                                           port=conn_dict['port'],
+                                           passwd=conn_dict['password'],
+                                           db=conn_dict['dbname'])
+
+
+      # Create a cursor object
+      cursorObject = connectionObject.cursor()                                     
+
+      # SQL query string
+      sqlQuery = 'CREATE TABLE ' + str(table_name) + '('
+      
+      for i in range(len(cols)):
+        sqlQuery = sqlQuery + str(cols[i]) + ' ' + str(types[i])
+        if i != len(cols) - 1:
+          sqlQuery = sqlQuery+ ', '
+      sqlQuery = sqlQuery + ') CHARACTER SET utf8 COLLATE utf8_general_ci'      
+
+      # Execute the sqlQuery
+      cursorObject.execute(sqlQuery)
+
+      # SQL query string
+      sqlQuery = "show tables"    
+
+      # Execute the sqlQuery
+      cursorObject.execute(sqlQuery)
+
+      #Fetch all the rows
+      rows = cursorObject.fetchall()
+
+      for row in rows:
+          print(row)
+
+  except Exception as e:
+
+      print("Exeception occured:{}".format(e))
+
+  finally:
+
+      connectionObject.close()
+
+# Example
+# create_table(conn_dict, 'Hebrew', ['Hebrew','Translat', 'Translit', 'Genus', 'Type'],
+#                                   ['varchar(32)', 'varchar(32)', 'varchar(32)', 'varchar(32)', 'varchar(32)'])
+
+### Delete Table
+def del_table(conn_dict, table_name):
+  try:
+
+      connectionObject = pymysql.connect(conn_dict['host'],
+                                           user=conn_dict['user'],
+                                           port=conn_dict['port'],
+                                           passwd=conn_dict['password'],
+                                           db=conn_dict['dbname'])
+      # Create a cursor object
+      cursorObject        = connectionObject.cursor()                                     
+
+      # SQL query string
+      sqlQuery            = 'DROP TABLE ' + str(table_name) + ' CASCADE'   
+
+      # Execute the sqlQuery
+      cursorObject.execute(sqlQuery)
+
+      # SQL query string
+      sqlQuery            = 'show tables'
+
+      # Execute the sqlQuery
+      cursorObject.execute(sqlQuery)
+
+      #Fetch all the rows
+      rows                = cursorObject.fetchall()
+
+      for row in rows:
+          print(row)
+
+  except Exception as e:
+      print("Exeception occured:{}".format(e))
+
+  finally:
+      connectionObject.close()
