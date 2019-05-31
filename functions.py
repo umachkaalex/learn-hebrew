@@ -196,14 +196,14 @@ def create_and_save_input(table_name, conn_obj, lang='RUS'):
       cell_5 = 'no_input'
    
   cell_6 = 'no_input'
-    while cell_6 == 'no_input':
-      cell_6 = input(lang_dict[lang]['plural']) or ''
-      if cell_6 == '':
-        print(lang_dict[lang]['finish_add'])
-        return False
-      if cell_6 not in lang_dict[lang]['plural_list']:
-        print(lang_dict[lang]['plural_error'])      
-        cell_6 = 'no_input'
+  while cell_6 == 'no_input':
+    cell_6 = input(lang_dict[lang]['plural']) or ''
+    if cell_6 == '':
+      print(lang_dict[lang]['finish_add'])
+      return False
+    if cell_6 not in lang_dict[lang]['plural_list']:
+      print(lang_dict[lang]['plural_error'])      
+      cell_6 = 'no_input'
   
   if  cell_1 in hebr_words:    
     idx = hebr_words.index(cell_1)    
