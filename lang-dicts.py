@@ -1,5 +1,7 @@
 ### Create language texts
-lang_dict = {'RUS': {'hebrew': 'введите слово на иврите: ',                     
+lang_dict = {'RUS': {
+                     ### add row block 
+                     'hebrew': 'введите слово на иврите: ',                     
                      'translation': 'введите перевод: ',                     
                      'translitiration': 'введите транслитерацию: ',
                      'genus': 'введите род (муж, жен): ',
@@ -15,5 +17,10 @@ lang_dict = {'RUS': {'hebrew': 'введите слово на иврите: ',
                      'plural_error': 'нет такого числа',
                      'finish_add': 'закончили',
                      'check_add': 'проверяем: ',
-                     'dupl_err_txt': ['слово ', ' есть в словаре']
+                     'dupl_err_txt': ['слово ', ' есть в словаре']  
                      }}
+
+lang_dict_check = {'RUS': {
+                           ### check knowledge
+                           'transl_word': 'переведите слово: ',
+                           }}
