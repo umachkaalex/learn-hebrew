@@ -12,8 +12,12 @@ lang_dict = {'RUS': {'hebrew': 'введите слово на иврите: ',
                      'type': 'введите часть речи (сущ, глаг, мест, прилаг, нареч, вопрос, союз): ',
                      'type_list': ['сущ', 'глаг', 'мест', 'прилаг',
                                    'нареч', 'вопрос', 'союз', 'доп'],
+                     'plural': 'введите число (мн, ед): ',
+                     'plural_list': ['мн', 'ед'],
+                     'genus_list': ['муж', 'жен'],
                      'type_error': 'нет такой части речи',
                      'genus_error': 'нет такого рода',
+                     'plural_error': 'нет такого числа',
                      'finish_add': 'закончили',
                      'check_add': 'проверяем: ',
                      'dupl_err_txt': ['слово ', ' есть в словаре']
@@ -190,6 +194,16 @@ def create_and_save_input(table_name, conn_obj, lang='RUS'):
     if cell_5 not in lang_dict[lang]['type_list']:
       print(lang_dict[lang]['type_error'])      
       cell_5 = 'no_input'
+   
+  cell_6 = 'no_input'
+    while cell_6 == 'no_input':
+      cell_6 = input(lang_dict[lang]['plural']) or ''
+      if cell_6 == '':
+        print(lang_dict[lang]['finish_add'])
+        return False
+      if cell_6 not in lang_dict[lang]['plural_list']:
+        print(lang_dict[lang]['plural_error'])      
+        cell_6 = 'no_input'
   
   if  cell_1 in hebr_words:    
     idx = hebr_words.index(cell_1)    
@@ -205,7 +219,7 @@ def create_and_save_input(table_name, conn_obj, lang='RUS'):
       return False
   
   else:
-    add_row(table_name, conn_obj, [cell_1, cell_2, cell_3, cell_4, cell_5])
+    add_row(table_name, conn_obj, [cell_1, cell_2, cell_3, cell_4, cell_5, cell_6])
     return True
 
 ### Start loop to add new words until empty input is recieved
