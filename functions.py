@@ -209,7 +209,7 @@ def create_and_save_input(table_name, conn_obj, lang='RUS'):
     idx = hebr_words.index(cell_1)    
     if cell_2 == transl_words[idx] and cell_4 == genus_words[idx]:
       dupl_err_txt = lang_dict[lang]['dupl_err_txt']      
-      print(str(dupl_err_txt[0]) + str(cell_1) + '-' + str(cell_2) + '-'+ str(cell_3) + '-'+ str(cell_4) + '-'+ str(cell_5) + str(dupl_err_txt[1]))
+      print(str(dupl_err_txt[0]) + str(cell_1) + '-' + str(cell_2) + '-' + str(cell_3) + '-' + str(cell_4) + '-' + str(cell_5) + '-' + str(cell_6) + str(dupl_err_txt[1]))
       time.sleep(3)
       return True
       
