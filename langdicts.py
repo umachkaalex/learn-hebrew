@@ -26,7 +26,7 @@ lang_dict_check = {'RUS': {
                            }}
 
 lang_noun = {'RUS': {'lang_sl': 'един. число: ',                     
-                     'lang_pl': 'жен. род/един. число: ',                     '
+                     'lang_pl': 'мн. число: ',
                      'trns_sl': 'перевод: ',                     
                      'trns_pl': 'перевод: ',                     
                      'trnsl_sl': 'транслитерация: ',
