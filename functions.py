@@ -161,7 +161,7 @@ def create_and_save_input(table_name, conn_obj, lang='RUS'):
       print(lang_dict[lang]['finish_add'])
       return False
     if cell_4 not in lang_dict[lang]['genus_list']:
-      print(lang_dict[lang]['genius_error'])      
+      print(lang_dict[lang]['genus_error'])      
       cell_4 = 'no_input'
   
   cell_5 = 'no_input'
