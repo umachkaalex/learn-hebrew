@@ -136,13 +136,57 @@ def add_row(table_name, conn_obj, values):
 
 ### Get inputs, create row and add it to the table
 def create_and_save_input(table_name, conn_obj, lang='RUS'):
-  if check != '':
+def noun_input(conn_obj, table_name='noun', lang='RUS'):
+  
+  def add_cell(col):    
+    cell = input(lang_noun[lang][col]) or 0  
+    if cell == '.':
       print(lang_dict[lang]['finish_add'])
       return False
+    else:
+      return cell
   
+  table = pd.read_sql('select * from ' +str(table_name) + ';', con=conn_obj)
+  cols = table.columns.tolist()
+  values_1 = table[cols[0]].tolist()
+  values_2 = table[cols[1]].tolist()
+  cells = dict()
+  zeros = len(cols)
+  row_str = ''
+  status = True
+  duplicates = False
+  for col in cols:
+    cur_cell = add_cell(col)
+    
+    if cur_cell in values_1:
+      print(lang_dict[lang]['dupl_err_txt'])
+      time.sleep(3)
+      duplicates = True
+      break
+      
+    if cur_cell == 0:
+      zeros -= 1
+    else:
+      row_str += str(cur_cell) + ' - '        
+      
+    if zeros == 7:
+      cells[col] = cur_cell
+    else:      
+      status = False
+      break
+  
+  if not status:    
+    return False
   else:
-    add_row(table_name, conn_obj, [cell_1, cell_2, cell_3, cell_4, cell_5, cell_6])
-    return True
+    check = input(str(lang_dict[lang]['check_add']) + str(row_str)) or ''
+    if check != '':
+      return False
+    else:
+      if not duplicates:
+        add_row(table_name, conn_obj, cells)      
+        return True
+      else:
+        return True
 
 ### Start loop to add new words until empty input is recieved
 def add_words_to_dict(conn_dict, table_name, conn_obj):  
