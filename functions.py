@@ -134,65 +134,6 @@ def add_row(table_name, conn_obj, values):
 
 ### Get inputs, create row and add it to the table
 def create_and_save_input(table_name, conn_obj, lang='RUS'):
-  table = pd.read_sql('select * from Hebrew;', con=conn_obj)
-  hebr_words = table['Hebrew'].tolist()  
-  transl_words = table['Translat'].tolist()
-  genus_words = table['Genus'].tolist()  
-  
-  cell_1 = input(lang_dict[lang]['hebrew']) or ''
-  if cell_1 == '':
-    print(lang_dict[lang]['finish_add'])
-    return False
-  
-  cell_2 = input(lang_dict[lang]['translation']) or ''
-  if cell_2 == '':
-    print(lang_dict[lang]['finish_add'])
-    return False
-  
-  cell_3 = input(lang_dict[lang]['translitiration']) or ''
-  if cell_3 == '':
-    print(lang_dict[lang]['finish_add'])
-    return False
-  
-  cell_4 = 'no_input'
-  while cell_4 == 'no_input':
-    cell_4 = input(lang_dict[lang]['genus']) or ''
-    if cell_4 == '':
-      print(lang_dict[lang]['finish_add'])
-      return False
-    if cell_4 not in lang_dict[lang]['genus_list']:
-      print(lang_dict[lang]['genus_error'])      
-      cell_4 = 'no_input'
-  
-  cell_5 = 'no_input'
-  while cell_5 == 'no_input':
-    cell_5 = input(lang_dict[lang]['type']) or ''
-    if cell_5 == '':
-      print(lang_dict[lang]['finish_add'])
-      return False
-    if cell_5 not in lang_dict[lang]['type_list']:
-      print(lang_dict[lang]['type_error'])      
-      cell_5 = 'no_input'
-   
-  cell_6 = 'no_input'
-  while cell_6 == 'no_input':
-    cell_6 = input(lang_dict[lang]['plural']) or ''
-    if cell_6 == '':
-      print(lang_dict[lang]['finish_add'])
-      return False
-    if cell_6 not in lang_dict[lang]['plural_list']:
-      print(lang_dict[lang]['plural_error'])      
-      cell_6 = 'no_input'
-  
-  if  cell_1 in hebr_words:    
-    idx = hebr_words.index(cell_1)    
-    if cell_2 == transl_words[idx] and cell_4 == genus_words[idx]:
-      dupl_err_txt = lang_dict[lang]['dupl_err_txt']      
-      print(str(dupl_err_txt[0]) + str(cell_1) + '-' + str(cell_2) + '-' + str(cell_3) + '-' + str(cell_4) + '-' + str(cell_5) + '-' + str(cell_6) + str(dupl_err_txt[1]))
-      time.sleep(3)
-      return True
-      
-  check = input(str(lang_dict[lang]['check_add']) + str(cell_1) + '-' + str(cell_2) + '-'+ str(cell_3) + '-'+ str(cell_4) + '-'+ str(cell_5) + '-'+ str(cell_6)) or ''
   if check != '':
       print(lang_dict[lang]['finish_add'])
       return False
