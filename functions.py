@@ -192,8 +192,8 @@ def create_and_save_input(table_name, conn_obj, lang='RUS'):
       time.sleep(3)
       return True
       
-  check = input(str(lang_dict[lang]['check_add']) + str(cell_1) + '-' + str(cell_2) + '-'+ str(cell_3) + '-'+ str(cell_4) + '-'+ str(cell_5)) or ''
-  if check == '':
+  check = input(str(lang_dict[lang]['check_add']) + str(cell_1) + '-' + str(cell_2) + '-'+ str(cell_3) + '-'+ str(cell_4) + '-'+ str(cell_5) + '-'+ str(cell_6)) or ''
+  if check != '':
       print(lang_dict[lang]['finish_add'])
       return False
   
