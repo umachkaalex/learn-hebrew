@@ -25,16 +25,15 @@ lang_dict_check = {'RUS': {
                            'transl_word': 'переведите слово: ',
                            }}
 
-lang_noun = {'RUS': {'lang_m_sl': 'муж. род/един. число: ',
-                     'lang_w_sl': 'муж. род/мн. число: ',
-                     'lang_m_pl': 'жен. род/един. число: ',
-                     'lang_w_pl': 'жен. род/мн. число: ',
-                     'trns_m_sl': 'перевод: ',
-                     'trns_w_sl': 'перевод: ',
-                     'trns_m_pl': 'перевод: ',
-                     'trns_w_pl': 'перевод: ',
-                     'trnsl_m_sl': 'транслитерация: ',
-                     'trnsl_w_sl': 'транслитерация: ',
-                     'trnsl_m_pl': 'транслитерация: ',
-                     'trnsl_w_pl': 'транслитерация: ',                                                                                       
+lang_noun = {'RUS': {'lang_sl': 'един. число: ',                     
+                     'lang_pl': 'жен. род/един. число: ',                     '
+                     'trns_sl': 'перевод: ',                     
+                     'trns_pl': 'перевод: ',                     
+                     'trnsl_sl': 'транслитерация: ',
+                     'trnsl_pl': 'транслитерация: ',
+                     'genus': 'род: ',                                                                                       
                      }}
+
+'lang_sl', 'trns_sl', 'trnsl_sl',                                  
+                                 'lang_pl', 'trns_pl', 'trnsl_pl', 
+                                 'genus'
