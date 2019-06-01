@@ -2,7 +2,7 @@ import pymysql
 import pandas as pd
 import time
 from IPython.display import clear_output
-from lang-dicts import *
+from langdicts import *
 
 ### CREATE TABLE
 def create_table(conn_dict, table_name, cols, types):
