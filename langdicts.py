@@ -17,7 +17,7 @@ lang_dict = {'RUS': {
                      'plural_error': 'нет такого числа',
                      'finish_add': 'закончили',
                      'check_add': 'проверяем: ',
-                     'dupl_err_txt': ['слово ', ' есть в словаре']  
+                     'dupl_err_txt': ['слово есть в словаре']  
                      }}
 
 lang_dict_check = {'RUS': {
