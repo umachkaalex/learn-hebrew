@@ -104,14 +104,16 @@ def add_row(table_name, conn_obj, values):
       insertStatement = 'INSERT INTO ' + str(table_name) + '('
       
       for i in range(len(cols)):
-        insertStatement = insertStatement + str(cols[i])
+        col = cols[i]
+        insertStatement = insertStatement + str(col)
         if i != len(cols)-1:
            insertStatement = insertStatement + ', '
         else:
            insertStatement = insertStatement + ') VALUES (\''
             
       for i in range(len(values)):
-        insertStatement = insertStatement + str(values[i])
+        col = cols[i]
+        insertStatement = insertStatement + str(values[col])
         if i != len(cols)-1:
            insertStatement = insertStatement + '\',\''
         else:
