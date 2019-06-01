@@ -34,6 +34,3 @@ lang_noun = {'RUS': {'lang_sl': 'един. число: ',
                      'genus': 'род: ',                                                                                       
                      }}
 
-'lang_sl', 'trns_sl', 'trnsl_sl',                                  
-                                 'lang_pl', 'trns_pl', 'trnsl_pl', 
-                                 'genus'
