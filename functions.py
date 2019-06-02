@@ -155,7 +155,8 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
   status = True
   duplicates = 0
   for col in cols:
-    cur_cell = add_cell(col)    
+    cur_cell = add_cell(col)
+    print(cur_cell)
     if cur_cell == 0:      
       status = False
       break    
