@@ -159,7 +159,7 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
     print(cur_cell)
     if cur_cell == 0:      
       status = False
-      break    
+      break   
       
     if cur_cell in values_1 or cur_cell in values_2:
       duplicates += 1
@@ -171,6 +171,7 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
     if cur_cell == 0:
       zeros -= 1
     else:
+      cells[col] = cur_cell
       row_str += str(cur_cell) + ' - '        
   print(cells)  
   if not status:
