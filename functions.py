@@ -164,7 +164,7 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
       duplicates += 1
     if duplicates == 2:
       print(lang_dict[lang]['dupl_err_txt'])
-      time.sleep(3)      
+      time.sleep(30)      
       break
       
     if cur_cell == 0:
@@ -174,7 +174,7 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
       
   if not status:
     print(lang_dict[lang]['finish_add'])
-    time.sleep(5)
+    time.sleep(30)
     return False
   else:
     check = input(str(lang_dict[lang]['check_add']) + str(row_str)) or ''
