@@ -154,7 +154,10 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
   duplicates = 0
   for col in cols:
     cur_cell = add_cell(col)
-    
+    if cur_cell == 0:      
+      status = False
+      break    
+      
     if cur_cell in values_1 or cur_cell in values_2:
       duplicates += 1
     if duplicates == 2:
@@ -167,12 +170,6 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
     else:
       row_str += str(cur_cell) + ' - '        
       
-    if zeros == 7:
-      cells[col] = cur_cell
-    else:      
-      status = False
-      break
-  
   if not status:
     print(lang_dict[lang]['finish_add'])
     time.sleep(3)
