@@ -139,12 +139,9 @@ def add_row(table_name, conn_obj, values):
 def noun_input(conn_obj, table_name='noun', lang='RUS'):
   
   def add_cell(col):    
-    cell = input(lang_noun[lang][col]) or 0  
-    if cell == '.':
-      print(lang_dict[lang]['finish_add'])
-      return False
-    else:
-      return cell
+    cell = input(lang_noun[lang][col]) or 0
+    cell = lambda cell: cell[:1].lower() + cell[1:] if cell != 0 else 0    
+    return cell
   
   table = pd.read_sql('select * from ' +str(table_name) + ';', con=conn_obj)
   cols = table.columns.tolist()
@@ -154,14 +151,15 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
   zeros = len(cols)
   row_str = ''
   status = True
-  duplicates = False
+  duplicates = 0
   for col in cols:
     cur_cell = add_cell(col)
     
-    if cur_cell in values_1:
+    if cur_cell in values_1 or in values_2:
+      duplicates += 1
+    if duplicates == 2:
       print(lang_dict[lang]['dupl_err_txt'])
-      time.sleep(3)
-      duplicates = True
+      time.sleep(3)      
       break
       
     if cur_cell == 0:
@@ -175,14 +173,16 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
       status = False
       break
   
-  if not status:    
+  if not status:
+    print(lang_dict[lang]['finish_add'])
+    time.sleep(3)
     return False
   else:
     check = input(str(lang_dict[lang]['check_add']) + str(row_str)) or ''
     if check != '':
       return False
     else:
-      if not duplicates:
+      if duplicates < 2:
         add_row(table_name, conn_obj, cells)      
         return True
       else:
