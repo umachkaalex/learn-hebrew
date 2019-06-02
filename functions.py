@@ -119,8 +119,6 @@ def add_row(table_name, conn_obj, values):
            insertStatement = insertStatement + '\',\''
         else:
            insertStatement = insertStatement + '\')'
-      
-      print(insertStatement)
                        
       cursorObject.execute(insertStatement)
 
@@ -155,8 +153,7 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
   status = True
   duplicates = 0
   for col in cols:
-    cur_cell = add_cell(col)
-    print(cur_cell)
+    cur_cell = add_cell(col)    
     if cur_cell == 0:      
       status = False
       break   
@@ -165,7 +162,7 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
       duplicates += 1
     if duplicates == 2:
       print(lang_dict[lang]['dupl_err_txt'])
-      time.sleep(30)      
+      time.sleep(3)      
       break
       
     if cur_cell == 0:
@@ -173,10 +170,10 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
     else:
       cells[col] = cur_cell
       row_str += str(cur_cell) + ' - '        
-  print(cells)  
+   
   if not status:
     print(lang_dict[lang]['finish_add'])
-    time.sleep(30)
+    time.sleep(3)
     return False
   else:
     check = input(str(lang_dict[lang]['check_add']) + str(row_str)) or ''
@@ -196,7 +193,7 @@ def add_words_to_dict(conn_dict, table_name, conn_obj):
     add_next_row = noun_input(conn_obj, table_name=table_name, lang='RUS') 
     table = read_table(table_name, conn_obj)
     print(table.tail(3))
-    time.sleep(30)    
+    time.sleep(3)    
     clear_output()
    
 ### Create Connection
