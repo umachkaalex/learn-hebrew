@@ -171,7 +171,7 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
       zeros -= 1
     else:
       row_str += str(cur_cell) + ' - '        
-      
+  print(cells)  
   if not status:
     print(lang_dict[lang]['finish_add'])
     time.sleep(30)
