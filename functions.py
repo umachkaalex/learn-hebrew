@@ -120,7 +120,7 @@ def add_row(table_name, conn_obj, values):
         else:
            insertStatement = insertStatement + '\')'
       
-    
+      print(insertStatement)
                        
       cursorObject.execute(insertStatement)
 
