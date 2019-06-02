@@ -140,8 +140,10 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
   
   def add_cell(col):    
     cell = input(lang_noun[lang][col]) or 0
-    cell = lambda cell: cell[:1].lower() + cell[1:] if cell != 0 else 0    
-    return cell
+    if cell != 0:
+      return cell[:1].lower() + cell[1:]
+    else:    
+      return 0
   
   table = pd.read_sql('select * from ' +str(table_name) + ';', con=conn_obj)
   cols = table.columns.tolist()
