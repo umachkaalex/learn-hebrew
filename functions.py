@@ -174,7 +174,7 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
       
   if not status:
     print(lang_dict[lang]['finish_add'])
-    time.sleep(3)
+    time.sleep(5)
     return False
   else:
     check = input(str(lang_dict[lang]['check_add']) + str(row_str)) or ''
@@ -194,7 +194,7 @@ def add_words_to_dict(conn_dict, table_name, conn_obj):
     add_next_row = noun_input(conn_obj, table_name=table_name, lang='RUS') 
     table = read_table(table_name, conn_obj)
     print(table.tail(3))
-    time.sleep(3)    
+    time.sleep(5)    
     clear_output()
    
 ### Create Connection
