@@ -155,7 +155,7 @@ def noun_input(conn_obj, table_name='noun', lang='RUS'):
   for col in cols:
     cur_cell = add_cell(col)
     
-    if cur_cell in values_1 or in values_2:
+    if cur_cell in values_1 or cur_cell in values_2:
       duplicates += 1
     if duplicates == 2:
       print(lang_dict[lang]['dupl_err_txt'])
