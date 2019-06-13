@@ -23,6 +23,8 @@ lang_dict = {'RUS': {
 lang_dict_check = {'RUS': {
                            ### check knowledge
                            'transl_word': 'переведите слово: ',
+                           'good': 'Молодец!',
+                           'bad': 'Неверно.',
                            }}
 
 lang_noun = {'RUS': {'lang_sl': 'един. число: ',                     
