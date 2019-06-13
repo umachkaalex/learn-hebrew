@@ -200,3 +200,52 @@ def add_words_to_dict(conn_dict, table_name, conn_obj):
 def connection_object(conn_dict):
   return pymysql.connect(conn_dict['host'], user=conn_dict['user'], port=conn_dict['port'],passwd=conn_dict['password'],
                          db=conn_dict['dbname'])
+
+### Function to check noun similar words
+def check_nouns(conn_obj, table='noun'):  
+  hebrew_dict = read_table(table, conn_obj)
+  idx = np.arange(len(hebrew_dict))
+  random.shuffle(idx)
+  for elem in idx:
+    help = 0
+    cur_word = hebrew_dict.iloc[elem,:]['trns_sl']
+    h_word = hebrew_dict.iloc[elem,:]['lang_sl']
+    transl_phrase = lang_dict_check['RUS']['transl_word'] + cur_word + ': '
+    translit = hebrew_dict.iloc[elem,:]['trnsl_sl']
+
+    input_word = input(transl_phrase) or ''
+    if input_word != '.':
+      while input_word == '\':
+        print(h_word[:help])
+        help +=1
+        input_word = input(transl_phrase) or ''  
+
+      if input_word == h_word:
+        print(lang_dict_check['RUS']['good'])
+        print(cur_word + ': ' + input_word + ' (' + translit + ')')  
+      else:
+        print(input_word + ': ' + lang_dict_check['RUS']['bad'])
+        print(cur_word + ': ' + h_word + ' (' + translit + ')')
+    else:
+      break
+
+    cur_word = hebrew_dict.iloc[elem,:]['trns_pl']
+    h_word = hebrew_dict.iloc[elem,:]['lang_pl']
+    transl_phrase = lang_dict_check['RUS']['transl_word'] + cur_word + ': '
+    translit = hebrew_dict.iloc[elem,:]['trnsl_pl']
+    
+    input_word = input(transl_phrase) or ''  
+    if input_word != '.':
+      while input_word == '\':
+        print(h_word[:help])
+        help +=1
+        input_word = input(transl_phrase) or ''  
+
+      if input_word == hebrew_dict.iloc[elem,:]['lang_pl']:
+        print(lang_dict_check['RUS']['good'])
+        print(cur_word + ': ' + input_word + ' (' + translit + ')')
+      else:
+        print(input_word + ': ' + lang_dict_check['RUS']['bad'])
+        print(cur_word + ': ' + h_word + ' (' + translit + ')')
+    else:
+      break
