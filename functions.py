@@ -236,7 +236,7 @@ def check_nouns(conn_obj, table='noun'):
     
     input_word = input(transl_phrase) or ''  
     if input_word != '.':
-      while input_word == '\':
+      while input_word == '/':
         print(h_word[:help])
         help +=1
         input_word = input(transl_phrase) or ''  
