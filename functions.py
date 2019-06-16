@@ -1,6 +1,7 @@
 import pymysql
 import numpy as np
 import pandas as pd
+import random
 import time
 from IPython.display import clear_output
 from langdicts import *
