@@ -1,4 +1,5 @@
 import pymysql
+import numpy as np
 import pandas as pd
 import time
 from IPython.display import clear_output
