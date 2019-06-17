@@ -252,3 +252,43 @@ def check_nouns(conn_obj, table='noun'):
         print(cur_word + ': ' + h_word + ' (' + translit + ')')
     else:
       break
+
+### Learn words
+def learn_nouns(conn_obj, table='noun', lang='RUS'):  
+  hebrew_dict = read_table(table, conn_obj)
+  idx = np.arange(len(hebrew_dict))
+  random.shuffle(idx)
+  for elem in idx:    
+    cur_word = hebrew_dict.iloc[elem,:]['trns_sl']
+    h_word = hebrew_dict.iloc[elem,:]['lang_sl']    
+    translit = hebrew_dict.iloc[elem,:]['trnsl_sl']
+    transl_phrase = lang_dict_check[lang]['write_word'] + cur_word + ': ' + h_word + ' (' + translit + ')'
+
+    input_word = input(transl_phrase) or ''
+    if input_word != '':                            
+      if input_word == h_word:
+        print(lang_dict_check[lang]['good'])
+        print(cur_word + ': ' + input_word + ' (' + translit + ')')  
+      else:
+        print(input_word + ': ' + lang_dict_check[lang]['bad'])
+        print(cur_word + ': ' + h_word + ' (' + translit + ')')
+    else:
+      print(lang_dict[lang]['finish_add'])
+      break
+
+    cur_word = hebrew_dict.iloc[elem,:]['trns_pl']
+    h_word = hebrew_dict.iloc[elem,:]['lang_pl']    
+    translit = hebrew_dict.iloc[elem,:]['trnsl_pl']
+    transl_phrase = lang_dict_check[lang]['write_word'] + cur_word + ': ' + h_word + ' (' + translit + ')'
+    
+    input_word = input(transl_phrase) or ''  
+    if input_word != '':
+      if input_word == hebrew_dict.iloc[elem,:]['lang_pl']:
+        print(lang_dict_check[lang]['good'])
+        print(cur_word + ': ' + input_word + ' (' + translit + ')')
+      else:
+        print(input_word + ': ' + lang_dict_check[lang]['bad'])
+        print(cur_word + ': ' + h_word + ' (' + translit + ')')
+    else:
+      print(lang_dict[lang]['finish_add'])
+      break
