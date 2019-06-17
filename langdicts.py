@@ -23,6 +23,7 @@ lang_dict = {'RUS': {
 lang_dict_check = {'RUS': {
                            ### check knowledge
                            'transl_word': 'переведите слово: ',
+                           'write_word': 'напишите слово: ',
                            'good': 'Верно!',
                            'bad': 'Неверно.',
                            }}
