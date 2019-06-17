@@ -204,10 +204,15 @@ def connection_object(conn_dict):
                          db=conn_dict['dbname'])
 
 ### Learn and check words
-def learn_check_nouns(conn_obj, table='noun', learn=True, lang='RUS'):  
+def learn_check_nouns(conn_obj, table='noun', learn=True, lang='RUS', number=5):  
   hebrew_dict = read_table(table, conn_obj)
-  idx = np.arange(len(hebrew_dict))
-  random.shuffle(idx)
+  all_idx = np.arange(len(hebrew_dict))
+  random.shuffle(all_idx)
+  for i in range(int(len(all_idx)/number)+1):
+    if i != int(len(all_idx)/number):
+      idx = all_idx[i*number: (i+1)*number]
+    else:
+      idx = all_idx[i*number:]
   # learn
   if learn:
     for elem in idx:    
