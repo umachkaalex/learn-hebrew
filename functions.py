@@ -204,7 +204,7 @@ def connection_object(conn_dict):
                          db=conn_dict['dbname'])
 
 ### Learn and check words
-def learn_nouns(conn_obj, table='noun', learn=True, lang='RUS'):  
+def learn_check_nouns(conn_obj, table='noun', learn=True, lang='RUS'):  
   hebrew_dict = read_table(table, conn_obj)
   idx = np.arange(len(hebrew_dict))
   random.shuffle(idx)
