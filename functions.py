@@ -236,6 +236,7 @@ def check_nouns(conn_obj, table='noun'):
     transl_phrase = lang_dict_check['RUS']['transl_word'] + cur_word + ': '
     translit = hebrew_dict.iloc[elem,:]['trnsl_pl']
     
+    help = 0
     input_word = input(transl_phrase) or ''  
     if input_word != '.':
       while input_word == '/':
