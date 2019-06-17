@@ -216,7 +216,7 @@ def check_nouns(conn_obj, table='noun'):
     translit = hebrew_dict.iloc[elem,:]['trnsl_sl']
 
     input_word = input(transl_phrase) or ''
-    if input_word != '.':
+    if input_word != '':
       while input_word == '/':
         print(h_word[:help])
         help +=1
@@ -238,7 +238,7 @@ def check_nouns(conn_obj, table='noun'):
     
     help = 0
     input_word = input(transl_phrase) or ''  
-    if input_word != '.':
+    if input_word != '':
       while input_word == '/':
         print(h_word[:help])
         help +=1
