@@ -37,7 +37,7 @@ lang_noun = {'RUS': {'lang_sl': 'един. число: ',
                      'genus': 'род: ',                                                                                       
                      }}
 
-lang_noun = {'RUS': {'lang_sl_m': 'един. муж.: ',                     
+lang_verb = {'RUS': {'lang_sl_m': 'един. муж.: ',                     
                      'lang_pl_m': 'мн. муж.: ',
                      'lang_sl_w': 'един. жен.: ',
                      'lang_pl_w': 'мн. жен.: ',
