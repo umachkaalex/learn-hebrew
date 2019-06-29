@@ -137,7 +137,11 @@ def add_row(table_name, conn_obj, values):
 
 ### get noun inputs
 def noun_input(conn_obj, table_name='noun', lang='RUS'):
-  
+  if table_name == 'noun':
+    lang_noun = lang_noun
+  if table_name == 'noun':
+    lang_noun = lang_verb
+    
   def add_cell(col):    
     cell = input(lang_noun[lang][col]) or 0
     if cell != 0:
