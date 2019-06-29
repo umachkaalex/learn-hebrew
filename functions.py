@@ -189,10 +189,10 @@ def noun_input(conn_obj, lang_noun, table_name='noun', lang='RUS'):
         return True
 
 ### Start loop to add new words until empty input is recieved
-def add_words_to_dict(conn_dict, table_name, conn_obj):  
+def add_words_to_dict(conn_dict, lang_type, table_name, conn_obj):  
   add_next_row = True
   while add_next_row:
-    add_next_row = noun_input(conn_obj, table_name=table_name, lang='RUS') 
+    add_next_row = noun_input(conn_obj, lang_type, table_name=table_name, lang='RUS') 
     table = read_table(table_name, conn_obj)
     print(table.tail(3))
     time.sleep(3)    
