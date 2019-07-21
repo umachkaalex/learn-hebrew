@@ -6,6 +6,38 @@ import time
 from IPython.display import clear_output
 from langdicts import *
 
+
+### SHOW TABLES
+def show_tables(conn_dict):
+  try:
+
+      connectionObject = pymysql.connect(conn_dict['host'],
+                                           user=conn_dict['user'],
+                                           port=conn_dict['port'],
+                                           passwd=conn_dict['password'],
+                                           db=conn_dict['dbname'])
+      # Create a cursor object
+      cursorObject        = connectionObject.cursor()                                     
+      
+      # SQL query string
+      sqlQuery            = 'show tables'
+
+      # Execute the sqlQuery
+      cursorObject.execute(sqlQuery)
+
+      #Fetch all the rows
+      rows                = cursorObject.fetchall()
+
+      for row in rows:
+          print(row)
+
+  except Exception as e:
+      print("Exeception occured:{}".format(e))
+
+  finally:
+      connectionObject.close()
+      
+
 ### CREATE TABLE
 def create_table(conn_dict, table_name, cols, types):
   try:
