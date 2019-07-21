@@ -49,7 +49,7 @@ lang_verb = {'RUS': {'lang_inf': 'инфинитив: ',
                      'trnsl_sl_w': 'транслитерация: ',
                      'trnsl_pl_w': 'транслитерация: ',                                                                                              
                      }}
-lang_full = {'RUS': {'lang_inf': 'Безличн.: '
+lang_full = {'RUS': {'lang_inf': 'Безличн.: ',
                      'trns_inf': 'перевод: ',
                      'trnsl_inf': 'транслитерация: ',
                      
