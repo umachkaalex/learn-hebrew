@@ -9,33 +9,27 @@ from langdicts import *
 
 ### SHOW TABLES
 def show_tables(conn_dict):
-  try:
+  connectionObject = pymysql.connect(conn_dict['host'],
+                                       user=conn_dict['user'],
+                                       port=conn_dict['port'],
+                                       passwd=conn_dict['password'],
+                                       db=conn_dict['dbname'])
+  # Create a cursor object
+  cursorObject        = connectionObject.cursor()                                     
 
-      connectionObject = pymysql.connect(conn_dict['host'],
-                                           user=conn_dict['user'],
-                                           port=conn_dict['port'],
-                                           passwd=conn_dict['password'],
-                                           db=conn_dict['dbname'])
-      # Create a cursor object
-      cursorObject        = connectionObject.cursor()                                     
-      
-      # SQL query string
-      sqlQuery            = 'show tables'
+  # SQL query string
+  sqlQuery            = 'show tables'
 
-      # Execute the sqlQuery
-      cursorObject.execute(sqlQuery)
+  # Execute the sqlQuery
+  cursorObject.execute(sqlQuery)
 
-      #Fetch all the rows
-      rows                = cursorObject.fetchall()
+  #Fetch all the rows
+  rows                = cursorObject.fetchall()
 
-      for row in rows:
-          print(row)
+  for row in rows:
+      print(row)
 
-  except Exception as e:
-      print("Exeception occured:{}".format(e))
-
-  finally:
-      connectionObject.close()
+  connectionObject.close()
       
 
 ### CREATE TABLE
