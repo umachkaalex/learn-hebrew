@@ -358,6 +358,7 @@ def learn_check_vebrs(conn_obj, table='verbs_inf', learn=True, lang='RUS', numbe
         else:
           print(lang_dict[lang]['finish_add'])
           stop = True
+          print(stop)
           break
 
     # check
@@ -386,8 +387,9 @@ def learn_check_vebrs(conn_obj, table='verbs_inf', learn=True, lang='RUS', numbe
       else:
           print(lang_dict[lang]['finish_add'])
           stop = True
+          print(stop)
           break
+    print(stop)
+    if stop:
       print(stop)
-      if stop:
-        print(stop)
-        break
+      break
