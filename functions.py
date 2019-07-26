@@ -389,4 +389,4 @@ def learn_check_vebrs(conn_obj, table='verbs_inf', learn=True, lang='RUS', numbe
           break
       
       if stop:
-        break
+        continue
