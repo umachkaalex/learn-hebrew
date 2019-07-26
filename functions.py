@@ -260,6 +260,7 @@ def learn_check_nouns(conn_obj, table='noun', learn=True, lang='RUS', number=5):
             print(cur_word + ': ' + h_word + ' (' + translit + ')')
         else:
           print(lang_dict[lang]['finish_add'])
+          stop = True          
           break
 
         cur_word = hebrew_dict.iloc[elem,:]['trns_pl']
@@ -303,6 +304,7 @@ def learn_check_nouns(conn_obj, table='noun', learn=True, lang='RUS', number=5):
           print(input_word + ': ' + lang_dict_check['RUS']['bad'])
           print(cur_word + ': ' + h_word + ' (' + translit + ')')
       else:
+        stop = True          
         break
 
       cur_word = hebrew_dict.iloc[elem,:]['trns_pl']
@@ -327,7 +329,7 @@ def learn_check_nouns(conn_obj, table='noun', learn=True, lang='RUS', number=5):
       else:
         stop = True          
         break
-    print(stop)
+    
     if stop:
       break
 
