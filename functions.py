@@ -24,12 +24,11 @@ def show_tables(conn_dict):
   cursorObject.execute(sqlQuery)
 
   #Fetch all the rows
-  rows                = cursorObject.fetchall()
-
-  for row in rows:
-      print(row)
+  tables                = cursorObject.fetchall()
 
   connectionObject.close()
+  
+  return tables
       
 
 ### CREATE TABLE
