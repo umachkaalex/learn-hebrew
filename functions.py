@@ -234,6 +234,7 @@ def learn_check_nouns(conn_obj, table='noun', learn=True, lang='RUS', number=5):
   hebrew_dict = read_table(table, conn_obj)
   all_idx = np.arange(len(hebrew_dict))
   random.shuffle(all_idx)
+  stop = False
   for i in range(int(len(all_idx)/number)+1):
     if i != int(len(all_idx)/number):
       idx = all_idx[i*number: (i+1)*number]
@@ -276,6 +277,7 @@ def learn_check_nouns(conn_obj, table='noun', learn=True, lang='RUS', number=5):
             print(cur_word + ': ' + h_word + ' (' + translit + ')')
         else:
           print(lang_dict[lang]['finish_add'])
+          stop = True
           break
     # check
     for ii in range(len(idx)):
@@ -323,7 +325,10 @@ def learn_check_nouns(conn_obj, table='noun', learn=True, lang='RUS', number=5):
           print(input_word + ': ' + lang_dict_check['RUS']['bad'])
           print(cur_word + ': ' + h_word + ' (' + translit + ')')
       else:
+        stop = True          
         break
+    if stop:
+      break
 
         
 ### Learn and check words
@@ -357,8 +362,7 @@ def learn_check_vebrs(conn_obj, table='verbs_inf', learn=True, lang='RUS', numbe
             print(cur_word + ': ' + h_word + ' (' + translit + ')')
         else:
           print(lang_dict[lang]['finish_add'])
-          stop = True
-          print(stop)
+          stop = True          
           break
 
     # check
@@ -386,10 +390,8 @@ def learn_check_vebrs(conn_obj, table='verbs_inf', learn=True, lang='RUS', numbe
           print(cur_word + ': ' + h_word + ' (' + translit + ')')
       else:
           print(lang_dict[lang]['finish_add'])
-          stop = True
-          print(stop)
+          stop = True          
           break
-    print(stop)
-    if stop:
-      print(stop)
+    
+    if stop:    
       break
